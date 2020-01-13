@@ -5,5 +5,6 @@
 	<classpathentry kind="src" path="hw-01/source"/>
 	<classpathentry kind="src" path="hw-02/source"/>
 	<classpathentry kind="src" path="hw-03/source"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
 	<classpathentry kind="output" path="hw-01/build/classes"/>
 </classpath>

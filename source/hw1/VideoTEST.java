@@ -1,16 +1,16 @@
 package hw1;
 
+import org.junit.*;
+
+import junit.framework.*;
 import junit.framework.Assert;
-import junit.framework.TestCase;
 
 // TODO:  complete the tests
 public class VideoTEST extends TestCase {
-	@test
 	public VideoTEST(String name) {
 		super(name);
 	}
 
-	@test
 	public void testConstructorAndAttributes() {
 		String title1 = "XX";
 		String director1 = "XY";
@@ -28,7 +28,6 @@ public class VideoTEST extends TestCase {
 		Assert.assertEquals(director1, v2.director());
 	}
 
-	@test
 	public void testConstructorExceptionYear() {
 		try {
 			new VideoObj("X", 1800, "Y");
@@ -48,7 +47,6 @@ public class VideoTEST extends TestCase {
 		}
 	}
 
-	@test
 	public void testConstructorExceptionTitle() {
 		try {
 			new VideoObj(null, 2002, "Y");
@@ -67,29 +65,67 @@ public class VideoTEST extends TestCase {
 		}
 	}
 
-	@test
 	public void testConstructorExceptionDirector() {
 		// TODO
+        try {
+            new VideoObj("title", 2002, null);
+            Assert.fail();
+        } catch (IllegalArgumentException e) {
+        }
+        try {
+            new VideoObj("title", 2002, "");
+            Assert.fail();
+        } catch (IllegalArgumentException e) {
+        }
+        try {
+            new VideoObj("title", 2002, " ");
+            Assert.fail();
+        } catch (IllegalArgumentException e) {
+        }
 	}
 
-	@test
 	public void testHashCode() {
 		Assert.assertEquals(-875826552, new VideoObj("None", 2009, "Zebra").hashCode());
 		Assert.assertEquals(-1391078111, new VideoObj("Blah", 1954, "Cante").hashCode());
 	}
 
-	@test
 	public void testEquals() {
 		// TODO
+        VideoObj v1 = new VideoObj("title", 2020, "director");
+        VideoObj v2 = new VideoObj("title", 2020, "director");
+        Assert.assertTrue(v1.equals(v2));
+        v2 = new VideoObj("no", 2019, "no");
+        Assert.assertFalse(v1.equals(v2));
 	}
 
-	@test
 	public void testCompareTo() {
 		// TODO
+        VideoObj v1 = new VideoObj("title", 2020, "director");
+        VideoObj v2 = new VideoObj("title", 2020, "director");
+        Assert.assertEquals(v1.compareTo(v2), 0);
+        
+        v2 = new VideoObj("title", 2021, "director");
+        Assert.assertTrue(v1.compareTo(v2) < 0);
+        
+        v2 = new VideoObj("title", 2019, "director");
+        Assert.assertTrue(v1.compareTo(v2) > 0);
+        
+        v2 = new VideoObj("titletitle", 2020, "directordirector");
+        Assert.assertTrue(v1.compareTo(v2) < 0);
+        
+        v2 = new VideoObj("title", 2019, "director");
+        Assert.assertTrue(v1.compareTo(v2) > 0);
+        
+        v2 = new VideoObj("a", 2020, "i");
+        Assert.assertTrue(v1.compareTo(v2) > 0);
+        
+        v2 = new VideoObj("title", 2020, "director");
+        Assert.assertTrue(v1.compareTo(v2) == 0);
 	}
 
-	@test
 	public void testToString() {
 		// TODO
+        VideoObj v1 = new VideoObj("Movie", 2020, "Ryne");
+        Assert.assertEquals(v1.toString(), "Movie (2020) : Ryne");
 	}
 }
