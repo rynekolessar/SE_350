@@ -1,6 +1,5 @@
 package hw1;
 
-// TODO: complete the methods
 /**
  * Immutable Data Class for video objects. Comprises a triple: title, year,
  * director.
