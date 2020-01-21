@@ -2,39 +2,62 @@ package hw2;
 
 public class MyLinked {
     static class Node {
-        public Node() { }
+        public Node() {
+        }
+
         public double item;
         public Node next;
     }
 
     int N;
     Node first;
-    
-    public MyLinked () {
+
+    public MyLinked() {
         first = null;
         N = 0;
-        assert checkInvariants ();
+        assert checkInvariants();
     }
 
+    /**
+     * @param k
+     * @return item at kth index
+     */
+    public double get(int k) {
+        Node current = first;
+        int count = 0;
+        while (current != null)
+        {
+            if (count == k)
+                return current.item;
+            count++;
+            current = current.next;
+        }
+        return 0;
+    }
 
     private boolean checkInvariants() {
-        assert((N != 0) || (first == null));
+        assert ((N != 0) || (first == null));
         Node x = first;
         for (int i = 0; i < N; i++) {
-            if (x==null) {
+            if (x == null) {
                 return false;
             }
             x = x.next;
         }
-        assert(x == null);
+        assert (x == null);
         return true;
     }
 
-    public boolean isEmpty () { return first == null; }
-    public int size () { return N; }
+    public boolean isEmpty() {
+        return first == null;
+    }
 
-    public void add (double item) {
-        Node newfirst = new Node ();
+    public int size() {
+        return N;
+    }
+
+    public void add(double item) {
+        Node newfirst = new Node();
         newfirst.item = item;
         newfirst.next = first;
         first = newfirst;
@@ -42,139 +65,49 @@ public class MyLinked {
     }
 
     // delete the kth element
-    public void delete (int k) {
-        // TODO
-        if (k < 0 || k >= N) throw new IllegalArgumentException ();
-        
-        assert checkInvariants ();
+    public void delete(int k) {
+        if (k < 0 || k >= N) { throw new IllegalArgumentException(); }
+        if(k==0) {
+            first = first.next;
+        } else {
+            Node temp = first;
+            int i = 0;
+            while(i < k-1) {
+                temp = temp.next;
+                i++;
+            }
+            temp.next = temp.next.next;
+        }
+        N--;
+        assert checkInvariants();
     }
 
     // reverse the list "in place"... without creating any new nodes
-    public void reverse () {
+    public void reverse() {
         Node prev = null, curr = first, next;
         while (curr != null) {
             next = curr.next;
             curr.next = prev;
             prev = curr;
             curr = next;
-            assert(next == curr.next && prev.next == curr); // TODO: Fix this, always false
         }
-        assert checkInvariants();
     }
 
     // removes an element rather than an item at an index
-    public void remove (double item) {
-    	// TODO
-        
-        assert checkInvariants ();
-    }
-
-// TODO: CONVERT THE FOLLOWING TO JUNIT TESTS
-// In a separate junit test file
-/*
-    private static void testDelete () {
-        MyLinked b = new MyLinked ();
-        b.add (1);
-        print ("singleton", b);
-        b.delete (0);
-        print ("deleted", b);
-        for (double i = 1; i < 13; i++) {
-            b.add (i);
+    public void remove(double item) {
+        while (first.item == item) {
+            first = first.next;
+            N--;
         }
-        print ("bigger list", b);
-        b.delete (0);
-        print ("deleted at beginning", b);
-        b.delete (10);
-        print ("deleted at end", b);
-        b.delete (4);
-        print ("deleted in middle", b);
-    }
-    private static void testReverse () {
-        MyLinked b = new MyLinked ();
-        b.reverse ();
-        print ("reverse empty", b);
-        b.add (1);
-        print ("singleton", b);
-        b.reverse ();
-        print ("reverse singleton", b);
-        b.add (2);
-        print ("two", b);
-        b.reverse ();
-        print ("reverse two", b);
-        b.reverse ();
-        print ("reverse again", b);
-        for (double i = 3; i < 7; i++) {
-            b.add (i);
-            b.add (i);
+        Node temp = first;
+        while (temp.next != null) {
+            if (temp.next.item == item) {
+                temp.next = temp.next.next;
+                N--;
+            } else {
+                temp = temp.next;
+            }
         }
-        print ("bigger list", b);
-        b.reverse ();
-        print ("reversed", b);
+        assert checkInvariants();
     }
-    private static void testRemove () {
-        MyLinked b = new MyLinked ();
-        b.remove (4);
-        print ("removed 4 from empty", b);
-        b.add (1);
-        b.remove (4);
-        print ("removed 4 from singelton", b);
-        b.remove (1);
-        print ("removed 1 from singelton", b);
-        for (double i = 1; i < 5; i++) {
-            b.add (i);
-            b.add (i);
-        }
-        for (double i = 1; i < 5; i++) {
-            b.add (i);
-            b.add (i);
-            b.add (i);
-            b.add (i);
-            b.add (i);
-        }
-        print ("longer list", b);
-        b.remove (9);
-        print ("removed all 9s", b); // does nothing
-        b.remove (3);
-        print ("removed all 3s", b);
-        b.remove (1);
-        print ("removed all 1s", b);
-        b.remove (4);
-        print ("removed all 4s", b);
-        b.remove (2);
-        print ("removed all 2s", b); // should be empty
-    }
-*/
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
