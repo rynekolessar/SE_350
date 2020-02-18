@@ -1,28 +1,26 @@
-package hw5.data;
+package shop.data;
 
-import hw5.command.Command;
+import shop.command.Command;
 
-public class CmdIn implements Command {
+public class CmdOut implements Command {
     private InventorySet _inventory;
     private Record _oldvalue;
     private Video _video;
-
-    public CmdIn(InventorySet inventory, Video video) {
+    public CmdOut(InventorySet inventory, Video video) {
         this._inventory = inventory;
         this._video = video;
     }
 
     /**
      * The Command body.
-     *
      * @return true if command succeeds,false otherwise
      */
     public boolean run() {
-        if (_oldvalue != null) {
+        if(_oldvalue != null) {
             return false;
         }
         try {
-            _oldvalue = _inventory.checkIn(_video);
+            _oldvalue = _inventory.checkOut(_video);
             _inventory.getHistory().add(this);
             return true;
         } catch (IllegalArgumentException | ClassCastException e) {
@@ -41,6 +39,6 @@ public class CmdIn implements Command {
      * redo the command.
      */
     public void redo() {
-        _inventory.checkIn(_video);
+        _inventory.checkOut(_video);
     }
 }

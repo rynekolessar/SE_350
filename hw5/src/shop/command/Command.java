@@ -1,4 +1,4 @@
-package hw5.command;
+package shop.command;
  /**
   * An UndoableCommand may be run at most once.
   */

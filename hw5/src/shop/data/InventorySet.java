@@ -1,7 +1,7 @@
-package hw5.data;
+package shop.data;
 
-import hw5.command.CommandHistory;
-import hw5.command.CommandHistoryObj;
+import shop.command.CommandHistory;
+import shop.command.CommandHistoryObj;
 
 import java.util.*;
 

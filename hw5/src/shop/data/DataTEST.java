@@ -1,4 +1,4 @@
-package hw5.data;
+package shop.data;
 
 import org.junit.jupiter.api.*;
 

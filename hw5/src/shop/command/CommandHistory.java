@@ -1,4 +1,4 @@
-package hw5.command;
+package shop.command;
 
 public interface CommandHistory {
     /**

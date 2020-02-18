@@ -1,4 +1,4 @@
-package hw5.data;
+package shop.data;
 
 public class VideoObj implements Video {
     String _title;

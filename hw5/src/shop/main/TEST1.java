@@ -1,12 +1,12 @@
-package hw5.main;
+package shop.main;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import hw5.command.Command;
-import hw5.data.Data;
-import hw5.data.Record;
-import hw5.data.Video;
-import hw5.data.Inventory;
+import shop.command.Command;
+import shop.data.Data;
+import shop.data.Record;
+import shop.data.Video;
+import shop.data.Inventory;
 import java.util.Iterator;
 
 public class TEST1  {

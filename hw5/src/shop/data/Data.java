@@ -1,6 +1,6 @@
-package hw5.data;
+package shop.data;
 
-import hw5.command.Command;
+import shop.command.Command;
 
 /**
  * A static class for accessing data objects

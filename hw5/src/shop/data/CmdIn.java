@@ -1,22 +1,20 @@
-package hw5.data;
+package shop.data;
 
-import hw5.command.Command;
-import java.util.Map;
+import shop.command.Command;
 
-/**
- * Implementation of command to clear the inventory.
- * @see Data
- */
-final class CmdClear implements Command {
+public class CmdIn implements Command {
     private InventorySet _inventory;
-    private Map _oldvalue;
+    private Record _oldvalue;
+    private Video _video;
 
-    public CmdClear(InventorySet inventory) {
+    public CmdIn(InventorySet inventory, Video video) {
         this._inventory = inventory;
+        this._video = video;
     }
 
     /**
      * The Command body.
+     *
      * @return true if command succeeds,false otherwise
      */
     public boolean run() {
@@ -24,7 +22,7 @@ final class CmdClear implements Command {
             return false;
         }
         try {
-            _oldvalue = _inventory.clear();
+            _oldvalue = _inventory.checkIn(_video);
             _inventory.getHistory().add(this);
             return true;
         } catch (IllegalArgumentException | ClassCastException e) {
@@ -36,13 +34,13 @@ final class CmdClear implements Command {
      * undo the command.
      */
     public void undo() {
-        _inventory.replaceMap(_oldvalue);
+        _inventory.replaceEntry(_video, _oldvalue);
     }
 
     /**
      * redo the command.
      */
     public void redo() {
-        _inventory.clear();
+        _inventory.checkIn(_video);
     }
 }

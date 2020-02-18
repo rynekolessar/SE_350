@@ -1,4 +1,4 @@
-package hw5.command;
+package shop.command;
 import java.util.Stack;
 
 public final class CommandHistoryObj implements CommandHistory {
