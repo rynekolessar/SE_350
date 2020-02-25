@@ -7,6 +7,7 @@ public final class UIMenu {
     private final String _heading;
     private final Pair[] _menu;
 
+    // TODO: Pull out Pair class and make it into a generic class
     static final class Pair {
         final String prompt;
         final UIMenuAction action;

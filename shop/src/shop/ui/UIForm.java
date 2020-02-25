@@ -7,6 +7,7 @@ public final class UIForm {
     private final String _heading;
     private final Pair[] _form;
 
+    // TODO: Pull out Pair class and make it into a generic class
     static final class Pair {
         final String prompt;
         final UIFormTest test;
@@ -15,7 +16,7 @@ public final class UIForm {
             prompt = thePrompt;
             test = theTest;
         }
-    }
+    }   
 
     UIForm(String heading, Pair[] menu) {
         _heading = heading;

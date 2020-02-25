@@ -1,6 +1,8 @@
 package shop.main;
 
 import shop.ui.UI;
+// TODO: Task 1: Factory Pattern for package UI
+// Delete from here
 import shop.ui.UIMenu;
 import shop.ui.UIMenuAction;
 import shop.ui.UIMenuBuilder;
@@ -8,6 +10,7 @@ import shop.ui.UIError;
 import shop.ui.UIForm;
 import shop.ui.UIFormTest;
 import shop.ui.UIFormBuilder;
+// to here
 import shop.data.Data;
 import shop.data.Inventory;
 import shop.data.Video;

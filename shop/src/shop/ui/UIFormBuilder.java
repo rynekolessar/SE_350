@@ -3,6 +3,8 @@ package shop.ui;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: Remove pair casts
+
 public final class UIFormBuilder {
     private final List _menu;
     public UIFormBuilder() {
