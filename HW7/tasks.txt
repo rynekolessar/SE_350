@@ -1,0 +1,7 @@
+Tasks Completed:
+
+1. UI Package converted to Factory Pattern
+2. Created Generic Pair class and removed it from UIForm and UIMenu classes
+3. Hash consing for Videos in Data
+
+*notes: Not sure if Package diagram and interaction diagram are correct. 
