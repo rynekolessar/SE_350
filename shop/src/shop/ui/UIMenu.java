@@ -3,20 +3,9 @@ package shop.ui;
 /**
  * @see UIMenuBuilder
  */
-public final class UIMenu {
+final class UIMenu implements UIMenuInterface {
     private final String _heading;
     private final Pair[] _menu;
-
-    // TODO: Pull out Pair class and make it into a generic class
-    static final class Pair {
-        final String prompt;
-        final UIMenuAction action;
-
-        Pair(String thePrompt, UIMenuAction theAction) {
-            prompt = thePrompt;
-            action = theAction;
-        }
-    }
 
     UIMenu(String heading, Pair[] menu) {
         _heading = heading;
@@ -34,4 +23,5 @@ public final class UIMenu {
     public void runAction(int i) {
         _menu[i].action.run();
     }
+
 }

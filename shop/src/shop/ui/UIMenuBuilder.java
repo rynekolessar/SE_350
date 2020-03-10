@@ -3,10 +3,8 @@ package shop.ui;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: Remove Pair casts
-
-public class UIMenuBuilder {
-    private final List _menu;
+final class UIMenuBuilder implements UIMenuBuilderInterface{
+    private final List<Pair> _menu;
     public UIMenuBuilder() {
         _menu = new ArrayList();
     }
@@ -15,14 +13,14 @@ public class UIMenuBuilder {
             throw new IllegalArgumentException();
         if (_menu.size() <= 1)
             throw new IllegalStateException();
-        UIMenu.Pair[] array = new UIMenu.Pair[_menu.size()];
+        Pair[] array = new Pair[_menu.size()];
         for (int i = 0; i < _menu.size(); i++)
-            array[i] = (UIMenu.Pair) (_menu.get(i));
+            array[i] = _menu.get(i);
         return new UIMenu(heading, array);
     }
     public void add(String prompt, UIMenuAction action) {
         if (null == action)
             throw new IllegalArgumentException();
-        _menu.add(new UIMenu.Pair(prompt, action));
+        _menu.add(new Pair(prompt, action));
     }
 }

@@ -2,12 +2,14 @@ package shop.data;
 
 import shop.command.UndoableCommand;
 import shop.command.RerunnableCommand;
+import java.util.WeakHashMap;
 
 /**
  * A static class for accessing data objects
  */
 public class Data {
     private Data() {}
+    static WeakHashMap<VideoObj,VideoObj> hashMap = new WeakHashMap<>();
 
     /**
      * Returns a new Inventory.
@@ -34,7 +36,12 @@ public class Data {
         if (  ("".equals(title)) || ("".equals(director))) {
             throw new IllegalArgumentException();
         }
-        return new VideoObj(title, year, director);
+        //return new VideoObj(title, year, director);
+        VideoObj v = new VideoObj(title, year, director);
+        if (!hashMap.containsKey(v)) {
+            hashMap.put(v,v);
+        }
+        return v;
     }
     /**
      * Returns a command to add or remove copies of a video from the inventory.
