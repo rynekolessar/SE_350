@@ -1,19 +1,11 @@
 package shop.ui;
 
-public class Pair {
-    final String prompt;
-    final UIMenuAction action;
-    final UIFormTest test;
+final class Pair <T1,T2> {
+    final T1 t1;
+    final T2 t2;
 
-    Pair(String thePrompt, UIMenuAction theAction) {
-        prompt = thePrompt;
-        action = theAction;
-        test = null;
-    }
-
-    Pair(String thePrompt, UIFormTest theTest) {
-        prompt = thePrompt;
-        test = theTest;
-        action = null;
+    Pair(T1 t1, T2 t2) {
+        this.t1 = t1;
+        this.t2 = t2;
     }
 }

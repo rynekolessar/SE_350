@@ -1,26 +1,23 @@
 package shop.ui;
 
 import java.util.ArrayList;
-import java.util.List;
 
-final class UIMenuBuilder implements UIMenuBuilderInterface{
-    private final List<Pair> _menu;
+public final class UIMenuBuilder extends UIBuilderStructure<UIMenuAction> {
     public UIMenuBuilder() {
-        _menu = new ArrayList();
+        _structure = new ArrayList<>();
     }
+
     public UIMenu toUIMenu(String heading) {
-        if (null == heading)
-            throw new IllegalArgumentException();
-        if (_menu.size() <= 1)
-            throw new IllegalStateException();
-        Pair[] array = new Pair[_menu.size()];
-        for (int i = 0; i < _menu.size(); i++)
-            array[i] = _menu.get(i);
+        if (null == heading) { throw new IllegalArgumentException(); }
+
+        if (_structure.size() <= 1) { throw new IllegalStateException(); }
+
+        Pair<String, UIMenuAction>[] array = new Pair[_structure.size()];
+
+        for (int i = 0; i < _structure.size(); i++) {
+            array[i] = _structure.get(i);
+        }
+
         return new UIMenu(heading, array);
-    }
-    public void add(String prompt, UIMenuAction action) {
-        if (null == action)
-            throw new IllegalArgumentException();
-        _menu.add(new Pair(prompt, action));
     }
 }

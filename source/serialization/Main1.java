@@ -10,9 +10,12 @@ public class Main1 {
 
 			ObjectInputStream is = new ObjectInputStream(new FileInputStream("out.dat"));
 			Object o = is.readObject();
+			Object o1 = is.readObject();
 
 			Entry e = (Entry) o;
+			Entry e1 = (Entry) o1;
 			System.out.println("Entry restored from file is: " + e.toString());
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -20,6 +23,7 @@ public class Main1 {
 }
 
 class Entry implements Serializable {
+	private static final long serialVersionUID = 1.0;
 	private String message = "";
 	private int messageNumber = 0;
 

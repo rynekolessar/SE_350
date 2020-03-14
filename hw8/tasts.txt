@@ -1,0 +1,5 @@
+Tasks I have completed:
+
+1. Refactored UIMenu and UIForm to remove redundant and copied code.
+2. Refactored UIMenuBuilder and UIFormBuilder to remove redundant and copied code.
+3. Implemented the State Pattern in Control.java

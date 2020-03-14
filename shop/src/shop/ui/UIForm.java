@@ -3,26 +3,14 @@ package shop.ui;
 /**
  * @see UIFormBuilder
  */
-final class UIForm implements UIFormInterface {
-    private final String _heading;
-    private final Pair[] _form;
+public final class UIForm extends UIStructure<UIFormTest> {
+    UIForm(String heading, Pair<String, UIFormTest>[] structure) {
+        super(heading, structure);
+    }
 
-    UIForm(String heading, Pair[] menu) {
-        _heading = heading;
-        _form = menu;
-    }
-    public int size() {
-        return _form.length;
-    }
-    public String getHeading() {
-        return _heading;
-    }
-    public String getPrompt(int i) {
-        return _form[i].prompt;
-    }
     public boolean checkInput(int i, String input) {
-        if (null == _form[i])
+        if (null == _struct[i])
             return true;
-        return _form[i].test.run(input);
+        return _struct[i].t2.run(input);
     }
 }
